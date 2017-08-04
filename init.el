@@ -70,9 +70,7 @@ static char *gnus-pointer[] = {
 \"###..######.######\",
 \"###########.######\" };")))
  '(inhibit-startup-screen t)
- '(package-selected-packages
-   (quote
-    (ppd-sr-speedbar tabbar afternoon-theme obsidian-theme auctex)))
+ '(package-selected-packages (quote (tabbar obsidian-theme auctex)))
  '(red "#ffffff")
  '(show-paren-mode t)
  '(sr-speedbar-auto-refresh t)
