@@ -104,12 +104,18 @@ static char *gnus-pointer[] = {
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "YaHei Consolas Hybrid" :foundry "outline" :slant normal :weight normal :height 128 :width normal))))
  '(highlight-numbers-number ((default (:inherit font-lock-constant-face)))))
 
-
+;;设置英文字体
+(set-face-attribute
+'default nil :font "Consolas 12")
+;;设置中文字体
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+(set-fontset-font (frame-parameter nil 'font)
+charset
+(font-spec :family "微软雅黑" :size 18)))
 ;;窗口大小
-(set-frame-width (selected-frame) 180)
+(set-frame-width (selected-frame) 170)
 (set-frame-height (selected-frame) 40)
 ;;缩进
 (setq default-tab-width 4)
