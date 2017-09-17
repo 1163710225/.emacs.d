@@ -134,7 +134,7 @@ charset
 ;;高亮当前行
 (global-hl-line-mode 1)
 ;;一键打开终端
-(global-set-key (kbd "<f5>") 'shell)
+(global-set-key (kbd "<f10>") 'shell)
 ;;一键编译
 (defun compile-file ()
   (interactive)
