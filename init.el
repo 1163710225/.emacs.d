@@ -20,7 +20,7 @@
  '(custom-enabled-themes (quote (molokai)))
  '(custom-safe-themes
    (quote
-    ("b571f92c9bfaf4a28cb64ae4b4cdbda95241cd62cf07d942be44dc8f46c491f4" "b563a87aa29096e0b2e38889f7a5e3babde9982262181b65de9ce8b78e9324d5" "64ca5a1381fa96cb86fd6c6b4d75b66dc9c4e0fc1288ee7d914ab8d2638e23a9" "251348dcb797a6ea63bbfe3be4951728e085ac08eee83def071e4d2e3211acc3" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "c79c2eadd3721e92e42d2fefc756eef8c7d248f9edefd57c4887fbf68f0a17af" "01e067188b0b53325fc0a1c6e06643d7e52bc16b6653de2926a480861ad5aa78" "35d45ad7ed15ac649e771e488257efd705b91e002b4397611131200ed93948b7" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "f9574c9ede3f64d57b3aa9b9cef621d54e2e503f4d75d8613cbcc4ca1c962c21" "71b9b4c5d2a5126586d204e20c3fb4797f70d3d057a0c8b03bac2c51893007a2" default)))
+    ("fad47d267d4e8664021a8adb02632942de0f4f75b0ddbcfa7368e637ed851b21" "b571f92c9bfaf4a28cb64ae4b4cdbda95241cd62cf07d942be44dc8f46c491f4" "b563a87aa29096e0b2e38889f7a5e3babde9982262181b65de9ce8b78e9324d5" "64ca5a1381fa96cb86fd6c6b4d75b66dc9c4e0fc1288ee7d914ab8d2638e23a9" "251348dcb797a6ea63bbfe3be4951728e085ac08eee83def071e4d2e3211acc3" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "c79c2eadd3721e92e42d2fefc756eef8c7d248f9edefd57c4887fbf68f0a17af" "01e067188b0b53325fc0a1c6e06643d7e52bc16b6653de2926a480861ad5aa78" "35d45ad7ed15ac649e771e488257efd705b91e002b4397611131200ed93948b7" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "f9574c9ede3f64d57b3aa9b9cef621d54e2e503f4d75d8613cbcc4ca1c962c21" "71b9b4c5d2a5126586d204e20c3fb4797f70d3d057a0c8b03bac2c51893007a2" default)))
  '(debug-on-error t)
  '(diary-entry-marker (quote font-lock-variable-name-face))
  '(emms-mode-line-icon-image-cache
@@ -45,6 +45,7 @@ static char *note[] = {
 \"######....\",
 \"#######..#\" };")))
  '(fci-rule-color "#404040")
+ '(global-auto-complete-mode t)
  '(gnus-logo-colors (quote ("#1ec1c4" "#bababa")))
  '(gnus-mode-line-image-cache
    (quote
@@ -72,7 +73,7 @@ static char *gnus-pointer[] = {
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (highlight-operators highlight-numbers molokai-theme powerline tabbar obsidian-theme)))
+    (auto-complete highlight-operators highlight-numbers molokai-theme powerline tabbar obsidian-theme)))
  '(powerline-default-separator (quote arrow-fade))
  '(red "#ffffff")
  '(show-paren-mode t)
@@ -137,7 +138,9 @@ charset
 ;;一键编译
 (defun compile-file ()
   (interactive)
-  (compile (format "g++ -o %s %s -g -lm -Wall -std=c++14" (file-name-sans-extension (buffer-name))(buffer-name))))
+  (if (equal (message "%s" major-mode) "c-mode") (compile (format "gcc -o %s %s -g -Wall -std=c11" (file-name-sans-extension (buffer-name))(buffer-name))))
+  (if (equal (message "%s" major-mode) "c++-mode") (compile (format "g++ -o %s %s -g -Wall -std=c++14" (file-name-sans-extension (buffer-name))(buffer-name))))
+  (if (equal (message "%s" major-mode) "java-mode") (compile (format "javac %s" (buffer-name)))))
 (global-set-key (kbd "<f9>") 'compile-file)
 ;;一键调试
 (global-set-key (kbd "<f7>") 'gud-gdb)
