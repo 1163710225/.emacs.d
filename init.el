@@ -73,7 +73,7 @@ static char *gnus-pointer[] = {
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (auto-complete highlight-operators highlight-numbers molokai-theme powerline tabbar obsidian-theme)))
+    (yasnippet auto-complete highlight-operators highlight-numbers molokai-theme powerline tabbar obsidian-theme)))
  '(powerline-default-separator (quote arrow-fade))
  '(red "#ffffff")
  '(show-paren-mode t)
@@ -99,7 +99,8 @@ static char *gnus-pointer[] = {
      (320 . "#00a2f5")
      (340 . "#58b1f3")
      (360 . "#da26ce"))))
- '(vc-annotate-very-old-color "#da26ce"))
+ '(vc-annotate-very-old-color "#da26ce")
+ '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
