@@ -119,6 +119,9 @@ charset
 ;;窗口大小
 (set-frame-width (selected-frame) 170)
 (set-frame-height (selected-frame) 40)
+;;设置窗口透明度
+(set-frame-parameter (selected-frame) 'alpha (list 85 50))
+(add-to-list 'default-frame-alist (cons 'alpha (list 85 50)))
 ;;缩进
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
